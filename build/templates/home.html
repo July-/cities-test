@@ -1,0 +1,15 @@
+<ui-gmap-google-map center='homesctrl.map.center' zoom='homesctrl.map.zoom'>
+<ui-gmap-markers models="homesctrl.places" fit="true" coords="'self'"></ui-gmap-markers>
+</ui-gmap-google-map>
+<button class="btn btn-default" ng-click="homesctrl.toggleSort=!homesctrl.toggleSort">Сортировать по {{!homesctrl.toggleSort?'населению':'названию'}}</button>
+<div class="cities-list">
+	<div class="city" ng-repeat="city in homesctrl.citiesList | orderBy: homesctrl.toggleSort? (homesctrl.populationSum):('city_name') : homesctrl.toggleSort">
+		<span class="city-name">{{city.city_name}}</span>
+		<div class="districts" ng-if="city.districts.length">
+			<h4>Районы</h4>
+			<div class="district" ng-repeat="district in city.districts">
+				<strong>{{district.name}}</strong>. Население: {{district.population}}
+			</div>
+		</div>	
+	</div>
+</div>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Тест</title>
+	<link rel="stylesheet" href="css/styles.css">
+	
+	<script src="js/script.js"></script>
+	
+</head>
+<body ng-app="mainApp">
+
+<div ng-controller="AlertController as alertCtrl" class="alerts-container">
+	<div uib-alert ng-repeat="alert in alertCtrl.alerts" ng-class="'alert-' + (alert.type || 'warning')" close="alertCtrl.closeAlert($index)" dismiss-on-timeout="10000">{{alert.msg}}
+	</div>
+</div>
+
+<nav class="navbar navbar-inverse">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" ui-sref="home">Города</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li ui-sref-active="active"><a ui-sref="home">Главная</a></li>
+      <li ui-sref-active="active"><a ui-sref="edit">Редактировать</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+	<ui-view></ui-view>
+</div>
+	
+	
+</body>
+</html>

@@ -1,0 +1,26 @@
+<div class="modal-header">
+	<h3 class="modal-title" id="modal-title">Изменить город</h3>
+</div>
+<div class="modal-body" id="modal-body">
+
+	<form novalidate name="editcity_form" id="editcity_form">
+		<div class="form-group">
+			<label for="city">Название:</label>
+			<input type="text" class="form-control" name="city" id="city" ng-model="ctrl.cityData.city_name" required>
+		</div>
+		<div class="form-group">
+			<label for="lat">Широта:</label>
+			<input type="text" class="form-control" name="lat" id="lat" ng-model="ctrl.cityData.lat" ng-pattern="/^[+-]?((90\.?0*$)|(([0-8]?[0-9])\.?[0-9]*$))/" required>
+		</div>
+		<div class="form-group">
+			<label for="lat">Долгота:</label>
+			<input type="text" class="form-control" name="lon" id="lon" ng-model="ctrl.cityData.lon" ng-pattern="/^[+-]?((180\.?0*$)|(((1[0-7][0-9])|([0-9]{0,2}))\.?[0-9]*$))/" required>
+		</div>
+	</form>
+	 
+</div>
+
+<div class="modal-footer">
+	<button class="btn btn-primary" type="button" ng-click="ctrl.ok()" ng-disabled="editcity_form.$invalid">Сохранить</button>
+	<button class="btn btn-warning" type="button" ng-click="ctrl.cancel()">Отмена</button>
+</div>

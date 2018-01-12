@@ -1,0 +1,46 @@
+<html>
+<head>
+    <title>angular-jsonrpc-client example 1</title>
+
+    <script src="js/lib/angular.min.js"></script>
+    <script>
+        var url = 'http://95.213.207.35:18000/api';
+        angular
+            .module('TestApp', [])
+            .controller('TestController', ['$scope', '$http', function($scope, $http) {
+                $scope.url = url;
+                $scope.result = '';
+                
+                $scope.performCall = function() {
+                    var req = {
+											url: 'http://95.213.207.35:18000/api/',
+											method: 'POST',
+											data: {"method": "get_cities", "jsonrpc":"2.0", "id":1, "params": 
+													{
+														"key": "21efc888-8f4b-42a1-8de6-f27e016f2c06"
+
+													}
+											}
+										}
+
+
+										$http(req)
+										.then(function (res) {
+											console.log(res); 
+											return res; 
+										},
+                    function (er) {
+											console.log(er); 
+										});  
+                     
+                };
+            }]);
+    </script>
+</head>
+<body ng-app="TestApp">
+    <div ng-controller="TestController">
+        <button ng-click="performCall()">Call now</button></p>
+        
+    </div>
+</body>
+</html>

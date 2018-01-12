@@ -1,0 +1,40 @@
+<h2>Добавить город</h2>
+
+<form novalidate name="editctrl.addCityForm" id="editctrl.addCityForm">
+  <div class="form-group">
+    <label for="city">Город:</label>
+    <input type="text" class="form-control" name="city" id="city" ng-model="editctrl.city" required>
+  </div>
+  <div class="form-group">
+    <label for="lat">Широта:</label>
+    <input type="text" class="form-control" name="lat" id="lat" ng-model="editctrl.lat" ng-pattern="/^(\+|-)?(?:90(?:(?:\.0{1,6})?)|(?:[0-9]|[1-8][0-9])(?:(?:\.[0-9]{1,6})?))$/" ng-minlength="1" required>
+  </div>
+	<div class="form-group">
+    <label for="lat">Долгота:</label>
+    <input type="text" class="form-control" name="lon" id="lon" ng-model="editctrl.lon" ng-pattern="/^(\+|-)?(?:180(?:(?:\.0{1,6})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\.[0-9]{1,6})?))$/" ng-minlength="1" required>
+  </div>
+  <button type="submit" ng-disabled="editctrl.addCityForm.$invalid" class="btn btn-default" ng-click="editctrl.addCity(editctrl.city, editctrl.lat, editctrl.lon)">Сохранить</button>
+</form>
+<div class="result">{{editctrl.msg}}</div>
+
+<h2>Города</h2>
+<div class="cities-list">
+	<div class="city" ng-repeat="city in editctrl.citiesList">
+		<span class="city-name">{{city.city_name}}</span>
+		<div class="btn-group">
+			<button class="btn btn-default" ng-click="editctrl.editCity(city)">Изменить</button>
+			<button class="btn btn-default" ng-click="editctrl.deleteCity(city.city_id)">Удалить</button>
+			<button class="btn btn-default" ng-click="editctrl.addDistrictToCity(city.city_id)">Добавить район</button>
+		</div>
+		<div class="districts" ng-if="city.districts.length">
+			<h4>Районы</h4>
+			<div class="district" ng-repeat="district in city.districts">
+				<strong>{{district.name}}</strong>. Население: {{district.population}}
+				<div class="btn-group">
+					<button class="btn btn-default" ng-click="editctrl.editDistrict(district)">Изменить</button>
+					<button class="btn btn-default" ng-click="editctrl.deleteDistrict(district.district_id)">Удалить</button>
+				</div>
+			</div>
+		</div>	
+	</div>
+</div>

@@ -1,0 +1,22 @@
+<div class="modal-header">
+	<h3 class="modal-title" id="modal-title">Добавить район</h3>
+</div>
+<div class="modal-body" id="modal-body">
+
+	<form novalidate name="newdistrict_form" id="newdistrict_form">
+	<div class="form-group">
+		<label for="district_name">Название</label>
+		<input type="text" class="form-control" id="district_name" ng-model="ctrl.districtData.name" required />
+	</div>
+		<div class="form-group">
+			<label for="district_population">Население</label>
+			<input type="number" class="form-control" id="district_population" name="district_population" ng-model="ctrl.districtData.population" required />
+		</div>
+	</form>
+	 
+</div>
+
+<div class="modal-footer">
+	<button class="btn btn-primary" type="button" ng-click="ctrl.ok()" ng-disabled="newdistrict_form.$invalid">Сохранить</button>
+	<button class="btn btn-warning" type="button" ng-click="ctrl.cancel()">Отмена</button>
+</div>
